@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import {Component} from "react";
+import {CardList} from "./components/card-list";
+import { Top } from "./components/top-side";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      robots: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(response => response.json())
+      .then(data => this.setState({robots: data}));
+  }
+
+  render() {
+    return (
+      <div className="">
+        <Top top_text="Муурнуудаас хайлт хийдэг жижигхэн ReactJS-app" />
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-5xl uppercase font-bold py-4 my-4 font-oswald border rounded text-center bg-gray-300">
+            Муурнуудын хайлт
+          </h1>
+          <CardList robots={this.state.robots} />
+        </div>
+      </div>
+    );
+  }
 }
-
-export default App;

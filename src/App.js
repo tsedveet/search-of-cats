@@ -22,7 +22,7 @@ export default class App extends Component {
       <div className="">
         <Top top_text="Муурнуудаас хайлт хийдэг жижигхэн ReactJS-app" />
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-5xl uppercase font-bold py-4 my-4 font-oswald border rounded text-center bg-gray-300">
+          <h1 className="text-3xl md:text-5xl uppercase font-bold py-4 font-oswald border rounded text-center bg-gray-300">
             Муурнуудын хайлт
           </h1>
           <CardList robots={this.state.robots} />
